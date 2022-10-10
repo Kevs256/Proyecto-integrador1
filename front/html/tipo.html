@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300&display=swap" rel="stylesheet">
+    <title>Luxury Car's</title>
+    <style>
+        :root {
+            --blanco: #FFFFFF;
+            --negro: #000000;
+            --azul-claro: #1C69D4;
+            --azul-oscuro: #0653B6;
+            --gris-claro: #F2F2F2;
+            --gris-oscuro: #666666;
+            --negro-claro: #262626;
+            --delgadas: 400;
+            --gruesas: 700;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+        }
+
+        .pantalla {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+        }
+
+        .header {
+            width: 100%;
+            height: auto;
+        }
+
+        .varnav {
+            width: 100%;
+            height: 95px;
+            background-color: var(--negro-claro);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .div-logo {
+            width: 40%;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .div-logo img {
+            height: 75px;
+            object-fit: cover;
+            padding: 10px 0px 10px 45px;
+            cursor: pointer;
+        }
+
+        .div-botones-nav {
+            width: 60%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: 0px 5% 0px 5%;
+        }
+
+        .div-botones-nav a {
+            outline-style: none;
+            width: 25%;
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: var(--gruesas);
+        }
+
+        .zonasocios {
+            border: solid 1px var(--blanco);
+            padding: 12px 32px;
+            cursor: pointer;
+        }
+
+        .carrusel {
+            width: 100%;
+            height: 75vh;
+            background-color: var(--azul-claro);
+            position: relative;
+        }
+
+        .rotativas {
+            margin: 0;
+            height: 100%;
+        }
+
+        .rotativas img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+            object-position: center;
+        }
+
+        .letras-pantalla {
+            position: absolute;
+            right: 0%;
+            bottom: 28%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .letras-pantalla p:nth-child(1) {
+            color: var(--blanco);
+            font-size: 90px;
+            border-right: solid var(--blanco) 8px;
+            padding: 15px;
+            width: auto;
+        }
+
+        .letras-pantalla p:nth-child(2) {
+            color: var(--blanco);
+            font-size: 60px;
+            padding: 15px;
+            width: auto;
+        }
+
+        #izquierda:hover {
+            background-color: var(--gris-oscuro);
+            border-radius: 55px;
+        }
+
+        #derecha:hover {
+            background-color: var(--gris-oscuro);
+            border-radius: 55px;
+        }
+
+        .servicios {
+            width: 100%;
+            height: 80px;
+            background-color: var(--blanco);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .serviciox {
+            display: flex;
+            width: 15%;
+            height: 57px;
+            background-color: var(--gris-claro);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 0 55px
+        }
+
+        .serviciox p {
+            font-weight: var(--delgadas);
+            font-size: 28px;
+        }
+
+        .serviciox:nth-child(2) {
+            background-color: var(--blanco);
+            border: solid 5px var(--gris-claro);
+            border-bottom: none;
+        }
+
+        .secCambiable {
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: flex-end;
+            border-top: 5px solid var(--gris-claro);
+        }
+
+        .auto-sitio {
+            height: 100%;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .auto-sitio:nth-child(1) {
+            width: 53%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .auto-sitio:nth-child(2) {
+            box-sizing: border-box;
+            width: 47%;
+            display: flex;
+            flex-direction: column;
+            padding: 35px
+        }
+
+        .auto-sitio-backgroud {
+            background-color: var(--gris-claro);
+            width: 100%;
+            height: 100%;
+            border-right: solid 2px var(--negro);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .auto-sitio-backgroud h2 {
+            margin: 2vh 4vh 3vh 4vh;
+            font-size: 3vh;
+        }
+
+        .modelo-flecha {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0px 20px;
+            box-sizing: border-box;
+        }
+
+        .modelo-flecha img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .nombre-modelo {
+            display: flex;
+            height: 6vh;
+        }
+
+        .nombre-modelo p {
+            font-size: 4vh !important;
+            margin: 0px 10px !important;
+        }
+
+        .grilla-cosas {
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            padding: 5vh 5vh 0vh 5vh;
+            margin-top: 2vh;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .item {
+            margin: 1vh 0px;
+            box-sizing: border-box;
+            border-bottom: 1px var(--gris-oscuro) solid;
+        }
+
+        .item:nth-child(2n) {
+            display: flex;
+            justify-content: right;
+        }
+
+        .item p {
+            font-size: 2vh !important;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .auto-sitio img {
+            height: 100%;
+            width: auto;
+        }
+
+        .auto-sitio p {
+            font-size: 35px;
+            margin: 0;
+        }
+
+        .trehCharacters {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            height: 18%;
+        }
+
+        .character {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 15px;
+        }
+
+        .character:nth-child(1) {
+            border-right: solid 2px var(--gris-oscuro);
+        }
+
+        .character:nth-child(2) {
+            border-right: solid 2px var(--gris-oscuro);
+        }
+
+        .character p:nth-child(1) {
+            font-size: 30px;
+        }
+
+        .character p:nth-child(2) {
+            font-size: 15px;
+        }
+
+        .character p {
+            margin: 3px 0px;
+        }
+
+        .carroimg {
+            width: 100%;
+            height: 72%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carroimg img {
+            width: 95%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        #izquierda-carros {
+            transform: rotate(180deg);
+        }
+
+        #izquierda-carros2 {
+            transform: rotate(180deg);
+        }
+
+        .flechitasFotos {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .flechitasFotos img {
+            width: 35px;
+            height: 35px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .foother {
+            width: 100%;
+            height: 200px;
+            background-color: var(--negro-claro);
+        }
+
+        .foother-gris {
+            background-color: var(--gris-oscuro);
+            height: 168px;
+            margin: 32px 60px;
+            display: flex;
+            flex-direction: row;
+            color: var(--blanco);
+        }
+
+        .seccion-foother {
+            width: 50%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .titulo-foother h2 {
+            font-weight: var(--delgadas);
+            margin-top: 15px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        .contenido p {
+            font-weight: 200;
+        }
+
+        .redes {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 45px;
+            height: 45px;
+        }
+
+        .redes img {
+            margin-right: 15px;
+        }
+
+        .masinfo {
+            display: flex;
+            background-color: var(--azul-claro);
+            width: 35%;
+            height: auto;
+            top: 78%;
+            left: 70%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 2vh;
+            box-sizing: border-box;
+        }
+
+        .masinfo a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 2vh;
+        }
+
+        .botones-dos {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            padding-top: 3vh;
+            padding-bottom: 1vh;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pantalla">
+        <header class="header">
+            <nav class="varnav">
+                <div class="div-logo">
+                    <img src="../src/logo-sinfondo.png" alt="">
+                </div>
+                <div class="div-botones-nav">
+                    <a href="">Nuestros Autos</a>
+                    <a href="">Concesionarios</a>
+                    <a href="">Contactanos</a>
+                    <div class="zonasocios">
+                        <a href="">Zona socios</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="carrusel">
+                <figure class="rotativas">
+                    <img src="../src/black-bike.jpg" alt="">
+                </figure>
+                <div class="letras-pantalla">
+                    <p>AB15</p>
+                    <p>Cuspide de la velocidad</p>
+                </div>
+            </div>
+        </header>
+        <aside class="servicios">
+            <div class="serviciox">
+                <p>Motos</p>
+            </div>
+            <div class="serviciox">
+                <p>Autos</p>
+            </div>
+        </aside>
+        <section class="secCambiable" id="secCambiable">
+
+        </section>
+        <footer class="foother">
+            <div class="foother-gris">
+                <div class="seccion-foother">
+                    <div class="titulo-foother">
+                        <h2>Luxury Cars</h2>
+                    </div>
+                    <div class="contenido">
+                        <p>
+                            Empresa dedicada a la importacion de autos modulares de lujo y carrera, con 20 años de
+                            trayectoria ofrenciendo los servicios de asesoria en personalizacion y mantenimiento.
+                        </p>
+                    </div>
+                </div>
+                <div class="seccion-foother">
+                    <div class="titulo-foother">
+                        <h2>Redes Sociales</h2>
+                    </div>
+                    <div class="redes">
+                        <img src="../src/facebook.png" alt="">
+                        <img src="../src/instagram.png" alt="">
+                        <img src="../src/twitter.png" alt="">
+                        <img src="../src/kivi.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+
+        let globalDatos;
+        let globalPosition;
+        let posicionCargada=0;
+
+
+
+        //esta funcion puede usar lo traido
+        function hola() {
+            console.log(global)
+        }
+
+        const cargarCarros = async (tipo) => {
+            //hago la promesa
+            const respuesta = await fetch('http://localhost/test');
+            //legan los datos de manera asincrona y paso a json
+            const datos = await respuesta.json()
+
+            //reviso el json
+            console.log(datos)
+            //tomamos lo que el cliente haya clickeado
+            let clickeado = JSON.parse(localStorage.getItem("clickeado"))
+
+            if (localStorage.getItem("clickeado")) {
+                console.log("existe")
+            } else {
+                clickeado = '"automoviles"'
+            }
+            //guardo el json
+            globalDatos = datos
+
+            //seccion que voy a empujar lo cargado
+            const HTMLResponse = document.querySelector('#secCambiable')
+            //de acuerdo a lo que clikee voy a cargar
+            //variable que voy a modificar, guardara la posicion en el json que debe mostrar
+
+            let cargarnumero = 0
+
+            //recorro los elementos
+            //cuando encuentre el primero guarda la ubicacion
+            for (const esto of datos) {
+                console.log(cargarnumero)
+                console.log(clickeado)
+                console.log(esto.vehiculos_categoria_nombre)
+                if (clickeado == esto.vehiculos_categoria_nombre) {
+                    break
+                }
+                cargarnumero=cargarnumero+1
+            }
+            //guardaremos la posicion que carga
+            posicionCargada =cargarnumero
+
+            //elemento que guarda la ubicacion
+            //console.log(cargarnumero)
+
+            //guardamos la posicion en la que se carga la imagen
+            globalPosition = cargarnumero
+
+            //creamos el html que insertaremos
+            const tpl = `<div class="auto-sitio" id="autositio1">
+                <div class="trehCharacters">
+                    <div class="character">
+                        <p>${datos[cargarnumero].vehiculo_potencia}</p>
+                        <p>Potencia maxima</p>
+                    </div>
+                    <div class="character">
+                        <p>${datos[cargarnumero].vehiculo_cilindraje}</p>
+                        <p>Cilindraje del motor</p>
+                    </div>
+                    <div class="character">
+                        <p>${datos[cargarnumero].vehiculo_velocidades}</p>
+                        <p>Maximas velocidades</p>
+                    </div>
+                </div>
+                <div class="carroimg">
+                    <img src="../src/fotocarros/${datos[cargarnumero].vehiculo_foto1}" id="foto" alt="">
+                </div>
+                <div class="flechitasFotos">
+                    <img id="izquierda-carros" src="../src/arrow-cars.png" alt="" onclick="pasarImagenAtras()">
+                    <img id="derecha-carros" src="../src/arrow-cars.png" alt="" onclick="pasarImagenAdelante()">
+                </div>
+            </div>
+            <div class="auto-sitio" id="autositio2">
+                <div class="auto-sitio-backgroud">
+                    <h2>Pricipales especificaciones tecnicas</h2>
+                    <div class="modelo-flecha">
+                        <img src="../src/arrow-cars.png" id="izquierda-carros2" alt="" onclick="clickIzquierda()">
+                        <div class="nombre-modelo">
+                            <p>${datos[cargarnumero].vehiculo_nombre}</p>
+                            <p>${datos[cargarnumero].vehiculos_marca_nombre}</p>
+                        </div>
+                        <img src="../src/arrow-cars.png" alt="" onclick="clickDerecha()">
+                    </div>
+                    <div class="grilla-cosas">
+                        <div class="item">
+                            <p>Motor:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculos_motor_nombre}</p>
+                        </div>
+                        <div class="item">
+                            <p>Tecnologia 1:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculo_tecnologia1}</p>
+                        </div>
+                        <div class="item">
+                            <p>Trasmision:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculos_trasmision_nombre}</p>
+                        </div>
+                        <div class="item">
+                            <p>Tecnolgia 2:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculo_tecnologia4}</p>
+                        </div>
+                        <div class="item">
+                            <p>Potencia:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculo_potencia}</p>
+                        </div>
+                        <div class="item">
+                            <p>Tecnologia 3:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculo_tecnologia2}</p>
+                        </div>
+                        <div class="item">
+                            <p>Garantia/KM:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculo_garantiakm}</p>
+                        </div>
+                        
+                        <div class="item">
+                            <p>Tecnologia 4:</p>
+                        </div>
+                        <div class="item">
+                            <p>${datos[cargarnumero].vehiculo_tecnologia3}</p>
+                        </div>
+                    </div>
+                    <div class="botones-dos">
+                        <div class="masinfo">
+                            <a href="">Mas informacion</a>
+                        </div>
+                        <div class="masinfo">
+                            <a href="">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            //insertamos el html
+            HTMLResponse.innerHTML = tpl
+        }
+
+        //usamos la recien funcion
+        cargarCarros()
+
+
+        //esta funcion carga la siguiente imagen 
+        let globalNumero = 1;
+
+        function pasarImagenAdelante() {
+            globalNumero = globalNumero + 1
+            let imagenTrida = document.getElementById("foto")
+            let string = "../src/fotocarros/" + globalDatos[globalPosition].vehiculo_foto1
+            if (globalNumero > 5) {
+                globalNumero = 1
+            }
+            let final = string.replace('1', globalNumero)
+            imagenTrida.src = final
+        }
+
+        //esta carga la anterior
+        function pasarImagenAtras() {
+            globalNumero = globalNumero - 1
+            let imagenTrida = document.getElementById("foto")
+            let string = "../src/fotocarros/" + globalDatos[globalPosition].vehiculo_foto1
+            if (globalNumero < 1) {
+                globalNumero = 5
+            }
+            let final = string.replace('1', globalNumero)
+            imagenTrida.src = final
+        }
+        //funcion que determina que cosa cargar
+        //lo determina modificando el local storage
+        
+        function pasarPosicionDerecha(clickeado) {
+            console.log("posicion cargada",posicionCargada)
+            posicionCargada = posicionCargada + 1
+            var count = Object.keys(globalDatos).length;
+            if (posicionCargada >= count ){
+                    posicionCargada = 0
+                }
+            console.log("esta es la cargada del while",posicionCargada)
+            while (clickeado != globalDatos[posicionCargada].vehiculos_categoria_nombre) {
+                posicionCargada = posicionCargada + 1
+                if (posicionCargada >= count ){
+                    posicionCargada = 0
+                }
+            }
+            console.log("aqui el que se cargara",posicionCargada)
+            return posicionCargada
+        }
+
+        function pasarPosicionIzquierda(clickeado) {
+            posicionCargada = posicionCargada - 1
+            var count = Object.keys(globalDatos).length;
+            if (posicionCargada < 0 ){
+                    posicionCargada = count-1
+                }
+            console.log("esta es la cargada del while",posicionCargada)
+            while (clickeado != globalDatos[posicionCargada].vehiculos_categoria_nombre) {
+                posicionCargada = posicionCargada - 1
+                if (posicionCargada < 0 ){
+                    posicionCargada = count-1
+                }
+            }
+            console.log("aqui el que se cargara",posicionCargada)
+            return posicionCargada
+        }
+
+        //funcion nueva donde vuelvo a cargar los objetos
+        function pasarObjeto(posicion) {
+
+            const HTMLResponse = document.querySelector('#secCambiable')
+
+            HTMLResponse.removeChild(HTMLResponse.childNodes[0])
+            HTMLResponse.removeChild(HTMLResponse.childNodes[1])
+
+            //eliminamos primero los hijos del elemento
+
+            const tpl = `<div class="auto-sitio">
+                <div class="trehCharacters">
+                    <div class="character">
+                        <p>${globalDatos[posicion].vehiculo_potencia}</p>
+                        <p>Potencia maxima</p>
+                    </div>
+                    <div class="character">
+                        <p>${globalDatos[posicion].vehiculo_cilindraje}</p>
+                        <p>Cilindraje del motor</p>
+                    </div>
+                    <div class="character">
+                        <p>${globalDatos[posicion].vehiculo_velocidades}</p>
+                        <p>Maximas velocidades</p>
+                    </div>
+                </div>
+                <div class="carroimg">
+                    <img src="../src/fotocarros/${globalDatos[posicion].vehiculo_foto1}" id="foto" alt="">
+                </div>
+                <div class="flechitasFotos">
+                    <img id="izquierda-carros" src="../src/arrow-cars.png" alt="" onclick="pasarImagenAtras()">
+                    <img id="derecha-carros" src="../src/arrow-cars.png" alt="" onclick="pasarImagenAdelante()">
+                </div>
+            </div>
+            <div class="auto-sitio">
+                <div class="auto-sitio-backgroud">
+                    <h2>Pricipales especificaciones tecnicas</h2>
+                    <div class="modelo-flecha">
+                        <img src="../src/arrow-cars.png" id="izquierda-carros2" alt="" onclick="clickIzquierda()">
+                        <div class="nombre-modelo">
+                            <p>${globalDatos[posicion].vehiculo_nombre}</p>
+                            <p>${globalDatos[posicion].vehiculos_marca_nombre}</p>
+                        </div>
+                        <img src="../src/arrow-cars.png" alt="" onclick="clickDerecha()">
+                    </div>
+                    <div class="grilla-cosas">
+                        <div class="item">
+                            <p>Motor:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculos_motor_nombre}</p>
+                        </div>
+                        <div class="item">
+                            <p>Tecnologia 1:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculo_tecnologia1}</p>
+                        </div>
+                        <div class="item">
+                            <p>Trasmision:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculos_trasmision_nombre}</p>
+                        </div>
+                        <div class="item">
+                            <p>Tecnolgia 2:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculo_tecnologia4}</p>
+                        </div>
+                        <div class="item">
+                            <p>Potencia:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculo_potencia}</p>
+                        </div>
+                        <div class="item">
+                            <p>Tecnologia 3:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculo_tecnologia2}</p>
+                        </div>
+                        <div class="item">
+                            <p>Garantia/KM:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculo_garantiakm}</p>
+                        </div>
+                        
+                        <div class="item">
+                            <p>Tecnologia 4:</p>
+                        </div>
+                        <div class="item">
+                            <p>${globalDatos[posicion].vehiculo_tecnologia3}</p>
+                        </div>
+                    </div>
+                    <div class="botones-dos">
+                        <div class="masinfo">
+                            <a href="">Mas informacion</a>
+                        </div>
+                        <div class="masinfo">
+                            <a href="">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+
+            HTMLResponse.innerHTML = tpl
+        }
+
+        function clickDerecha(){
+            let clickeado = JSON.parse(localStorage.getItem("clickeado"))
+            console.log(clickeado)
+            let posicion = pasarPosicionDerecha(clickeado)
+            pasarObjeto(posicion)
+        }
+
+        function clickIzquierda(){
+            let clickeado = JSON.parse(localStorage.getItem("clickeado"))
+            console.log(clickeado)
+            let posicion = pasarPosicionIzquierda(clickeado)
+            pasarObjeto(posicion)
+        }
+        
+
+
+    </script>
+</body>
+
+</html>

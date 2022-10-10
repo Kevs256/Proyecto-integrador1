@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300&display=swap" rel="stylesheet">
+    <title>Luxury Car's</title>
+    <style>
+        :root {
+            --blanco: #FFFFFF;
+            --negro: #000000;
+            --azul-claro: #1C69D4;
+            --azul-oscuro: #0653B6;
+            --gris-claro: #F2F2F2;
+            --gris-oscuro: #666666;
+            --negro-claro: #262626;
+            --delgadas: 400;
+            --gruesas: 700;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+        }
+
+        .pantalla {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+        }
+
+        .header {
+            width: 100%;
+            height: auto;
+        }
+
+        .varnav {
+            width: 100%;
+            height: 95px;
+            background-color: var(--negro-claro);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .div-logo {
+            width: 40%;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .div-logo img {
+            height: 75px;
+            object-fit: cover;
+            padding: 10px 0px 10px 45px;
+            cursor: pointer;
+        }
+
+        .div-botones-nav {
+            width: 60%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: 0px 5% 0px 5%;
+        }
+
+        .div-botones-nav a {
+            outline-style: none;
+            width: 25%;
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: var(--gruesas);
+        }
+
+        .zonasocios {
+            border: solid 1px var(--blanco);
+            padding: 12px 32px;
+            cursor: pointer;
+        }
+
+        .carrusel {
+            width: 100%;
+            height: 70vh;
+            background-color: var(--azul-claro);
+            position: relative;
+        }
+
+        .rotativas {
+            margin: 0;
+            height: 100%;
+        }
+
+        .rotativas img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+            object-position: bottom;
+        }
+
+        .masinfo {
+            display: flex;
+            background-color: var(--azul-claro);
+            width: 19%;
+            height: 64px;
+            position: absolute;
+            top: 78%;
+            left: 70%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .masinfo a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: var(--gruesas);
+        }
+
+        #izquierda:hover {
+            background-color: var(--gris-oscuro);
+            border-radius: 55px;
+        }
+
+        #derecha:hover {
+            background-color: var(--gris-oscuro);
+            border-radius: 55px;
+        }
+
+        .rows #izquierda {
+            position: absolute;
+            top: 45%;
+            width: 60px;
+            height: 40px;
+            opacity: 30%;
+            transform: rotate(90deg);
+            cursor: pointer;
+        }
+
+        .rows #derecha {
+            position: absolute;
+            top: 45%;
+            right: 0%;
+            width: 60px;
+            height: 40px;
+            opacity: 30%;
+            transform: rotate(-90deg);
+            cursor: pointer;
+        }
+
+        .servicios {
+            width: 100%;
+            height: 127px;
+            background-color: var(--blanco);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-end;
+        }
+
+        .serviciox {
+            display: flex;
+            width: 15%;
+            height: 97px;
+            background-color: var(--gris-claro);
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .serviciox img {
+            height: 45px;
+            object-fit: cover;
+            margin-top: 12px;
+        }
+
+        .serviciox p {
+            font-weight: var(--gruesas);
+            margin-top: 5px;
+        }
+
+        .secCambiable {
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: flex-end;
+        }
+
+        .auto-sitio {
+            cursor: pointer;
+            width: 45%;
+            height: 51vh;
+            margin: 30px 18px 0 18px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .auto-sitio img:nth-child(1) {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .auto-sitio p:nth-child(2) {
+            position: absolute;
+            color: var(--blanco);
+            font-size: 12vh;
+            top: 27vh;
+            left: -1vh;
+        }
+
+        .auto-sitio p:nth-child(3) {
+            position: absolute;
+            color: var(--blanco);
+            font-size: 8vh;
+            top: 35vh;
+            left: 28vh;
+        }
+
+        .foother {
+            width: 100%;
+            height: 200px;
+            background-color: var(--negro-claro);
+        }
+
+        .foother-gris {
+            background-color: var(--gris-oscuro);
+            height: 168px;
+            margin: 32px 60px;
+            display: flex;
+            flex-direction: row;
+            color: var(--blanco);
+        }
+
+        .seccion-foother {
+            width: 50%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .titulo-foother h2 {
+            font-weight: var(--delgadas);
+            margin-top: 15px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        .contenido p {
+            font-weight: 200;
+        }
+
+        .redes {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 45px;
+            height: 45px;
+        }
+
+        .redes img {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pantalla">
+        <header class="header">
+            <nav class="varnav">
+                <div class="div-logo">
+                    <img src="../src/logo-sinfondo.png" alt="">
+                </div>
+                <div class="div-botones-nav">
+                    <a href="#" onclick="nuestrosAutos()">Nuestros Vehiculos</a>
+                    <a href="">Concesionarios</a>
+                    <a href="">Contactanos</a>
+                    <div class="zonasocios">
+                        <a href="">Zona socios</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="carrusel">
+                <figure class="rotativas">
+                    <img src="../src/2cars.jpg" alt="">
+                </figure>
+                <div class="masinfo">
+                    <a href="#" onclick="nuestrosAutos()">Habla con nosotros</a>
+                </div>
+                <div class="rows">
+                    <img id="izquierda" src="../src/arrow.png" alt="">
+                    <img id="derecha" src="../src/arrow.png" alt="">
+                </div>
+            </div>
+        </header>
+        <aside class="servicios">
+            <div class="serviciox">
+                <img src="../src/repuestos.png" alt="">
+                <p>Repuestos</p>
+            </div>
+            <div class="serviciox">
+                <img src="../src/taller.png" alt="">
+                <p>Talleres Aliados</p>
+            </div>
+            <div class="serviciox">
+                <img src="../src/test-drive.png" alt="">
+                <p>Test drive</p>
+            </div>
+            <div class="serviciox">
+                <img src="../src/logo-sinfondo-negro.png" alt="">
+                <p>Sobre Luxury</p>
+            </div>
+        </aside>
+        <section class="secCambiable">
+            <div class="auto-sitio" >
+                <img src="../src/black-ferrari.jpg" id="automoviles" alt="">
+                <p>Automoviles</p>
+            </div>
+            <div class="auto-sitio" >
+                <img src="../src/black-bike.jpg" id="motocicletas"  alt="">
+                <p>Motocicletas</p>
+            </div>
+        </section>
+        <footer class="foother">
+            <div class="foother-gris">
+                <div class="seccion-foother">
+                    <div class="titulo-foother">
+                        <h2>Luxury Cars</h2>
+                    </div>
+                    <div class="contenido">
+                        <p>
+                            Empresa dedicada a la importacion de autos modulares de lujo y carrera, con 20 años de
+                            trayectoria ofrenciendo los servicios de asesoria en personalizacion y mantenimiento.
+                        </p>
+                    </div>
+                </div>
+                <div class="seccion-foother">
+                    <div class="titulo-foother">
+                        <h2>Redes Sociales</h2>
+                    </div>
+                    <div class="redes">
+                        <img src="../src/facebook.png" alt="">
+                        <img src="../src/instagram.png" alt="">
+                        <img src="../src/twitter.png" alt="">
+                        <img src="../src/kivi.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+
+        document.querySelectorAll(".auto-sitio").forEach(el => {
+            el.addEventListener("click", e => {
+                const id = e.target.getAttribute("id");
+                localStorage.setItem("clickeado", JSON.stringify(id));
+                window.location.href = "http://127.0.0.1:5500/front/html/tipo.html";
+            });
+        });
+
+        function nuestrosAutos(){
+            localStorage.setItem("clickeado", JSON.stringify("automoviles"));
+            window.location.href = "http://127.0.0.1:5500/front/html/tipo.html";
+        }
+    </script>
+</body>
+
+</html>

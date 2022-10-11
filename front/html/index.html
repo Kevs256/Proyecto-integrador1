@@ -25,6 +25,7 @@
         body {
             font-family: 'Outfit', sans-serif;
             margin: 0;
+            width: 100%;
         }
 
         .pantalla {
@@ -84,21 +85,40 @@
         }
 
         .carrusel {
-            width: 100%;
+            width: 400%;
             height: 70vh;
             background-color: var(--azul-claro);
             position: relative;
+            display: flex;
+            overflow: hidden !important;
+            animation:  cambio 30s infinite;
+            animation-direction: alternate;
         }
 
-        .rotativas {
+        @keyframes cambio {
+            0% {margin-left: 0;}
+            20%{margin-left: 0;}
+
+            25%{margin-left: -100%;}
+            45%{margin-left: -100%;}
+
+            50%{margin-left: -200%;}
+            70%{margin-left: -200%;}
+
+            75%{margin-left: -300%;}
+            100%{margin-left: -300%;}
+        }
+
+        .rotativas{
             margin: 0;
-            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
 
-        .rotativas img {
+        .rotativas img{
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            width: 100%;
             object-position: bottom;
         }
 
@@ -108,7 +128,7 @@
             width: 19%;
             height: 64px;
             position: absolute;
-            top: 78%;
+            top: 70%;
             left: 70%;
             align-items: center;
             justify-content: center;
@@ -267,6 +287,9 @@
         .redes img {
             margin-right: 15px;
         }
+        .padreCarrusel{
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -279,24 +302,36 @@
                 </div>
                 <div class="div-botones-nav">
                     <a href="#" onclick="nuestrosAutos()">Nuestros Vehiculos</a>
-                    <a href="">Concesionarios</a>
-                    <a href="">Contactanos</a>
+                    <a href="#">Concesionarios</a>
+                    <a href="#">Contactanos</a>
                     <div class="zonasocios">
                         <a href="">Zona socios</a>
                     </div>
                 </div>
             </nav>
-            <div class="carrusel">
-                <figure class="rotativas">
-                    <img src="../src/2cars.jpg" alt="">
-                </figure>
-                <div class="masinfo">
-                    <a href="#" onclick="nuestrosAutos()">Habla con nosotros</a>
+            <div class="padreCarrusel">
+                <div class="carrusel">
+                    <figure class="rotativas">
+                        <img src="../src/2cars.jpg" alt="">
+                    </figure>
+                    <figure class="rotativas">
+                        <img src="../src/2cars.jpg" alt="">
+                    </figure>
+                    <figure class="rotativas">
+                        <img src="../src/2cars.jpg" alt="">
+                    </figure>
+                    <figure class="rotativas">
+                        <img src="../src/2cars.jpg" alt="">
+                    </figure>
+    
+                    <div class="rows">
+                        <img id="izquierda" src="../src/arrow.png" alt="">
+                        <img id="derecha" src="../src/arrow.png" alt="">
+                    </div>
                 </div>
-                <div class="rows">
-                    <img id="izquierda" src="../src/arrow.png" alt="">
-                    <img id="derecha" src="../src/arrow.png" alt="">
-                </div>
+            </div>
+            <div class="masinfo">
+                <a href="https://api.whatsapp.com/send?phone=573177659903&text=Hola%20estoy%20interesado%20en%20uno%20de%20sus%20vehiculos" onclick="">Chatea con nosotros</a>
             </div>
         </header>
         <aside class="servicios">
@@ -312,7 +347,7 @@
                 <img src="../src/test-drive.png" alt="">
                 <p>Test drive</p>
             </div>
-            <div class="serviciox">
+            <div class="serviciox" onclick="scrollAnimado()">
                 <img src="../src/logo-sinfondo-negro.png" alt="">
                 <p>Sobre Luxury</p>
             </div>
@@ -340,7 +375,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="seccion-foother">
+                <div class="seccion-foother" id="foother">
                     <div class="titulo-foother">
                         <h2>Redes Sociales</h2>
                     </div>
@@ -368,6 +403,14 @@
             localStorage.setItem("clickeado", JSON.stringify("automoviles"));
             window.location.href = "http://127.0.0.1:5500/front/html/tipo.html";
         }
+
+        const scrollAnimado = () =>{
+            let foother = document.querySelector("#foother")
+            foother.scrollIntoView({
+                behavior:"smooth"
+            })
+        }
+
     </script>
 </body>
 

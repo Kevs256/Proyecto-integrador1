@@ -159,12 +159,26 @@
             margin: 0 55px
         }
 
+        .oscurecer {
+            background-color: var(--gris-claro);
+        }
+
+        .esclarecer {
+            background-color: var(--blanco);
+        }
+
         .serviciox p {
             font-weight: var(--delgadas);
             font-size: 28px;
         }
 
         .serviciox:nth-child(2) {
+            background-color: var(--blanco);
+            border: solid 5px var(--gris-claro);
+            border-bottom: none;
+        }
+
+        .serviciox:nth-child(1) {
             background-color: var(--blanco);
             border: solid 5px var(--gris-claro);
             border-bottom: none;
@@ -453,10 +467,10 @@
             </div>
         </header>
         <aside class="servicios">
-            <div class="serviciox">
+            <div class="serviciox" onclick="mostrarMotos()" id="bckMotos">
                 <p>Motos</p>
             </div>
-            <div class="serviciox">
+            <div class="serviciox" onclick="mostrarCarros()" id="bckCarros">
                 <p>Autos</p>
             </div>
         </aside>
@@ -493,15 +507,11 @@
     <script>
 
         let globalDatos;
-        let globalPosition;
-        let posicionCargada=0;
+        let posicionCargada = 0;
 
 
 
         //esta funcion puede usar lo traido
-        function hola() {
-            console.log(global)
-        }
 
         const cargarCarros = async (tipo) => {
             //hago la promesa
@@ -515,7 +525,7 @@
             let clickeado = JSON.parse(localStorage.getItem("clickeado"))
 
             if (localStorage.getItem("clickeado")) {
-                console.log("existe")
+
             } else {
                 clickeado = '"automoviles"'
             }
@@ -532,22 +542,31 @@
             //recorro los elementos
             //cuando encuentre el primero guarda la ubicacion
             for (const esto of datos) {
-                console.log(cargarnumero)
-                console.log(clickeado)
-                console.log(esto.vehiculos_categoria_nombre)
                 if (clickeado == esto.vehiculos_categoria_nombre) {
+                    let ruta;
+                    if (clickeado == "automoviles") {
+                        let bckMotos = document.getElementById("bckMotos")
+                        bckMotos.style.backgroundColor = "var(--gris-claro)"
+                    } else {
+                        let bckCarros = document.getElementById("bckCarros")
+                        bckCarros.style.backgroundColor = "var(--gris-claro)"
+                    }
                     break
                 }
-                cargarnumero=cargarnumero+1
+                cargarnumero = cargarnumero + 1
             }
             //guardaremos la posicion que carga
-            posicionCargada =cargarnumero
+            posicionCargada = cargarnumero
+
+            //posicionCargada POSICION JSON
 
             //elemento que guarda la ubicacion
-            //console.log(cargarnumero)
 
             //guardamos la posicion en la que se carga la imagen
-            globalPosition = cargarnumero
+
+            //POSICION IMAGEN
+
+            //de acuerdo a que ha clickeado pues lo cargamos
 
             //creamos el html que insertaremos
             const tpl = `<div class="auto-sitio" id="autositio1">
@@ -659,60 +678,66 @@
         function pasarImagenAdelante() {
             globalNumero = globalNumero + 1
             let imagenTrida = document.getElementById("foto")
-            let string = "../src/fotocarros/" + globalDatos[globalPosition].vehiculo_foto1
+            let string = "../src/fotocarros/" + globalDatos[posicionCargada].vehiculo_foto1
             if (globalNumero > 5) {
                 globalNumero = 1
             }
             let final = string.replace('1', globalNumero)
             imagenTrida.src = final
+            console.log("posicion cargarda",posicionCargada)
+            console.log("final",final)
         }
 
         //esta carga la anterior
         function pasarImagenAtras() {
             globalNumero = globalNumero - 1
             let imagenTrida = document.getElementById("foto")
-            let string = "../src/fotocarros/" + globalDatos[globalPosition].vehiculo_foto1
+            let string = "../src/fotocarros/" + globalDatos[posicionCargada].vehiculo_foto1
             if (globalNumero < 1) {
                 globalNumero = 5
             }
             let final = string.replace('1', globalNumero)
             imagenTrida.src = final
+            console.log("posicion cargarda",posicionCargada)
+            console.log("final",final)
         }
         //funcion que determina que cosa cargar
         //lo determina modificando el local storage
-        
+
         function pasarPosicionDerecha(clickeado) {
-            console.log("posicion cargada",posicionCargada)
+            
             posicionCargada = posicionCargada + 1
+            console.log("posicion cargarda",posicionCargada)
             var count = Object.keys(globalDatos).length;
-            if (posicionCargada >= count ){
-                    posicionCargada = 0
-                }
-            console.log("esta es la cargada del while",posicionCargada)
+            if (posicionCargada >= count) {
+                posicionCargada = 0
+            }
+
             while (clickeado != globalDatos[posicionCargada].vehiculos_categoria_nombre) {
                 posicionCargada = posicionCargada + 1
-                if (posicionCargada >= count ){
+                if (posicionCargada >= count) {
                     posicionCargada = 0
                 }
             }
-            console.log("aqui el que se cargara",posicionCargada)
+
             return posicionCargada
         }
 
         function pasarPosicionIzquierda(clickeado) {
             posicionCargada = posicionCargada - 1
+            console.log("posicion cargarda",posicionCargada)
             var count = Object.keys(globalDatos).length;
-            if (posicionCargada < 0 ){
-                    posicionCargada = count-1
-                }
-            console.log("esta es la cargada del while",posicionCargada)
+            if (posicionCargada < 0) {
+                posicionCargada = count - 1
+            }
+
             while (clickeado != globalDatos[posicionCargada].vehiculos_categoria_nombre) {
                 posicionCargada = posicionCargada - 1
-                if (posicionCargada < 0 ){
-                    posicionCargada = count-1
+                if (posicionCargada < 0) {
+                    posicionCargada = count - 1
                 }
             }
-            console.log("aqui el que se cargara",posicionCargada)
+
             return posicionCargada
         }
 
@@ -825,20 +850,67 @@
             HTMLResponse.innerHTML = tpl
         }
 
-        function clickDerecha(){
+        function clickDerecha() {
             let clickeado = JSON.parse(localStorage.getItem("clickeado"))
-            console.log(clickeado)
+
             let posicion = pasarPosicionDerecha(clickeado)
             pasarObjeto(posicion)
         }
 
-        function clickIzquierda(){
+        function clickIzquierda() {
             let clickeado = JSON.parse(localStorage.getItem("clickeado"))
-            console.log(clickeado)
+
             let posicion = pasarPosicionIzquierda(clickeado)
             pasarObjeto(posicion)
         }
-        
+
+        function mostrarMotos() {
+
+            let cargarnumero = 0
+
+
+            //recorro los elementos
+            //cuando encuentre el primero guarda la ubicacion
+            for (const esto of globalDatos) {
+                if ("motocicletas" == esto.vehiculos_categoria_nombre) {
+                    break
+                }
+                cargarnumero = cargarnumero + 1
+            }
+            posicionCargada=cargarnumero
+            pasarObjeto(cargarnumero)
+
+            let bckMotos = document.getElementById("bckMotos")
+            bckMotos.style.backgroundColor = "var(--white)"
+            let bckCarros = document.getElementById("bckCarros")
+            bckCarros.style.backgroundColor = "var(--gris-claro)"
+            localStorage.setItem("clickeado", JSON.stringify("motocicletas"));
+
+            
+        }
+
+        function mostrarCarros() {
+            let cargarnumero = 0
+
+
+            //recorro los elementos
+            //cuando encuentre el primero guarda la ubicacion
+            for (const esto of globalDatos) {
+                if ("automoviles" == esto.vehiculos_categoria_nombre) {
+                    break
+                }
+                cargarnumero = cargarnumero + 1
+            }
+            posicionCargada=cargarnumero
+            pasarObjeto(cargarnumero)
+
+            let bckMotos = document.getElementById("bckMotos")
+            bckMotos.style.backgroundColor = "var(--gris-claro)"
+            let bckCarros = document.getElementById("bckCarros")
+            bckCarros.style.backgroundColor = "var(--blanco)"
+            localStorage.setItem("clickeado", JSON.stringify("automoviles"));
+            
+        }
 
 
     </script>

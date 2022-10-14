@@ -99,7 +99,7 @@
             height: 100%;
             object-fit: cover;
             width: 100%;
-            object-position:bottom;
+            object-position: bottom;
         }
 
         .letras-pantalla {
@@ -437,51 +437,94 @@
             padding-bottom: 1vh;
             box-sizing: border-box;
         }
-        .formulario{
+
+        .formulario {
             width: 30%;
             height: 100%;
         }
-        .imagen-formulario{
+
+        .imagen-formulario {
             width: 70%;
             height: 100%;
         }
-        .imagen-formulario img{
+
+        .imagen-formulario img {
             height: 100%;
             width: 100%;
             object-fit: cover;
             object-position: center;
         }
-        .formulario{
+
+        .formulario {
             height: 100%;
         }
 
-        .formulario-estructuras{
+        .formulario-estructuras {
             height: 100%;
         }
 
         /* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
-        .formulario-interno{
+        .formulario-interno {
             padding: 4vh;
-            background-color: #1C69D4;
+            /* background-color: #1C69D4; */
             height: 100%;
             color: var(--negro-claro);
             box-sizing: border-box;
         }
-        .formulario-interno h3{
+
+        .formulario-interno h3 {
             margin: 0;
         }
-        .correo-form{
+
+        .correo-form {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .correo-form p{
+
+        .correo-form p {
             margin: 0;
 
         }
-        .correo-form p:nth-child(1){
+
+        .correo-form p:nth-child(1) {
             font-weight: 600;
         }
-        .correo-form p:nth-child(2){
+
+        .correo-form p:nth-child(2) {
             font-size: 10px;
+        }
+
+        .input-correo {
+            width: 100%;
+            background-color: var(--gris-claro);
+            border-top: none;
+            border-bottom: none;
+            border-left: none;
+            border-right: var(--azul-claro) solid 4px;
+            box-sizing: border-box;
+        }
+
+        .modelo-interes {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+        }
+
+        .modelo-interes p {
+            margin: 0;
+        }
+
+        .modelo-interes p {
+            font-weight: 600;
+        }
+
+        .selectores {
+            border: none;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
         }
     </style>
 </head>
@@ -510,6 +553,24 @@
                             <div class="correo-form">
                                 <p>Correo electronico</p>
                                 <p>(Solo es necesario un medio de contacto)</p>
+                            </div>
+                            <input type="email" class="input-correo">
+                            <div class="correo-form">
+                                <p>Numero de telefono</p>
+                            </div>
+                            <input type="number" class="input-correo">
+                            <div class="modelo-interes">
+                                <p>Modelo de interes</p>
+                                <select name="" id="" placeholder="Autos" class="selectores">
+                                    <option value="">carro1</option>
+                                    <option value="">carro2</option>
+                                    <option value="">carro3</option>
+                                </select>
+                                <select name="" id="" placeholder="Motos">
+                                    <option value="">moto1</option>
+                                    <option value="">moto2</option>
+                                    <option value="">moto3</option>
+                                </select>
                             </div>
                         </div>
                     </form>

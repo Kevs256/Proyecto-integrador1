@@ -225,10 +225,11 @@ CREATE OR replace PROCEDURE mostrar ()
 DELIMITER ;
 
 DELIMITER //
-CREATE OR replace PROCEDURE contactos ()
+CREATE OR replace PROCEDURE contactos (correo,numero)
+@correo 
  BEGIN
  INSERT INTO contactanos(correo_electronico,numero_telefono,modelo_autos,modelo_motos,interes_repuestos,interes_compra,interes_testdrive,interes_informacion,ingrese_descripcion)
- 
+ VALUES()
  END;
 //
 DELIMITER ;

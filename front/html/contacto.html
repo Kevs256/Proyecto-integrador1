@@ -407,26 +407,6 @@
             margin-right: 15px;
         }
 
-        .masinfo {
-            display: flex;
-            background-color: var(--azul-claro);
-            width: 35%;
-            height: auto;
-            top: 78%;
-            left: 70%;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            padding: 2vh;
-            box-sizing: border-box;
-        }
-
-        .masinfo a {
-            color: var(--blanco);
-            text-decoration: none;
-            font-size: 2vh;
-        }
-
         .botones-dos {
             width: 100%;
             display: flex;
@@ -470,6 +450,9 @@
             height: 100%;
             color: var(--negro-claro);
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
 
         .formulario-interno h3 {
@@ -503,12 +486,14 @@
             border-left: none;
             border-right: var(--azul-claro) solid 4px;
             box-sizing: border-box;
+            height: 3vh;
         }
+
 
         .modelo-interes {
             display: flex;
             align-items: center;
-            justify-content: space-around;
+
 
         }
 
@@ -518,13 +503,127 @@
 
         .modelo-interes p {
             font-weight: 600;
+            width: 40%;
         }
 
-        .selectores {
-            border: none;
-            appearance: none;
+        select {
             -webkit-appearance: none;
             -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: var(--gris-claro);
+            background-image: none;
+            flex: 1;
+            padding: 0 .5em;
+            color: var(--negro-claro);
+            cursor: pointer;
+            font-size: 15px;
+
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        .select {
+            position: relative;
+            display: flex;
+            width: 7em;
+            height: 2.5em;
+            line-height: 3;
+            background: var(--gris-claro);
+            overflow: hidden;
+        }
+
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 0.5em;
+            background: var(--gris-claro);
+            cursor: pointer;
+            pointer-events: none;
+            transition: .25s all ease;
+            border-right: 4px solid var(--azul-claro);
+        }
+
+        .interes-p-afuera {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .select:hover::after {
+            color: var(--azul-claro);
+        }
+
+        .interes p {
+            font-weight: 600 !important;
+            margin: 0;
+        }
+
+        .interes {
+            display: flex;
+        }
+
+        .cada-check {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+        }
+
+        .cada-check label {
+            margin: 0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .masinfo {
+            display: flex;
+            width: 100%;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+
+        .masinfo input {
+            background-color: var(--azul-claro);
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 2vh;
+            border: none;
+            cursor: pointer;
+            padding: 1.5vh;
+            width: 35%;
+        }
+
+        .masinfo p {
+            text-align: center;
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .masinfo p a {
+            text-decoration: none;
+            color: var(--azul-claro);
+        }
+
+        .texto-largo {
+            height: 7vh;
+        }
+
+        .acomodar {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+
         }
     </style>
 </head>
@@ -547,30 +646,67 @@
             </nav>
             <div class="carrusel">
                 <div class="formulario">
-                    <form action="" class="formulario-estructuras">
+                    <form action="" class="formulario-estructuras" id="form-contactos">
                         <div class="formulario-interno">
                             <h3>Contactanos</h3>
                             <div class="correo-form">
                                 <p>Correo electronico</p>
                                 <p>(Solo es necesario un medio de contacto)</p>
                             </div>
-                            <input type="email" class="input-correo">
+                            <input type="email" class="input-correo" id="contacto-correo">
                             <div class="correo-form">
                                 <p>Numero de telefono</p>
                             </div>
-                            <input type="number" class="input-correo">
+                            <input type="number" class="input-correo" id="contacto-numero">
                             <div class="modelo-interes">
                                 <p>Modelo de interes</p>
-                                <select name="" id="" placeholder="Autos" class="selectores">
-                                    <option value="">carro1</option>
-                                    <option value="">carro2</option>
-                                    <option value="">carro3</option>
-                                </select>
-                                <select name="" id="" placeholder="Motos">
-                                    <option value="">moto1</option>
-                                    <option value="">moto2</option>
-                                    <option value="">moto3</option>
-                                </select>
+                                <div class="acomodar">
+                                    <div class="select">
+                                        <select name="" id="contacto-carros" class="selectores">
+                                            <option selected disabled value="">Autos</option>
+                                            <option value="carro1">carro1</option>
+                                            <option value="carro2">carro2</option>
+                                            <option value="carro3">carro3</option>
+                                        </select>
+                                    </div>
+                                    <div class="select">
+                                        <select name="" id="contacto-motos" class="selectores">
+                                            <option selected disabled value="">Motos</option>
+                                            <option value="moto1">moto1</option>
+                                            <option value="moto2">moto2</option>
+                                            <option value="moto3">moto3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="interes-p-afuera">Interes</p>
+                            <div class="interes" id="intereses">
+                                <div class="cada-check">
+                                    <label for="">Repuestos</label>
+                                    <input type="checkbox" name="" id="checkbox1">
+                                </div>
+                                <div class="cada-check">
+                                    <label for="">Compra</label>
+                                    <input type="checkbox" name="" id="checkbox2">
+                                </div>
+                                <div class="cada-check">
+                                    <label for="">TestDrive</label>
+                                    <input type="checkbox" name="" id="checkbox3">
+                                </div>
+                                <div class="cada-check">
+                                    <label for="">Informacion</label>
+                                    <input type="checkbox" name="" id="checkbox4">
+                                </div>
+
+                            </div>
+                            <div class="correo-form">
+                                <p>Ingrese alguna descripcion:</p>
+                            </div>
+                            <input type="text" class="input-correo texto-largo" id="contacto-descripcion">
+                            <div class="masinfo">
+                                <input type="submit" value="Enviar" id="enviar-contactos">
+                                <p>Si le das a enviar aceptas nuestra <a href="">politica de tratameinto de datos</a>
+                                </p>
                             </div>
                         </div>
                     </form>
@@ -608,6 +744,66 @@
         </footer>
     </div>
     <script>
+        const formContactos = document.getElementById("form-contactos");
+        formContactos.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const contactoCorreo = document.getElementById("contacto-correo").value;
+            const contactoNumero = document.getElementById("contacto-numero").value;
+            const selectAuto = document.getElementById("contacto-carros").value;
+            const selectMoto = document.getElementById("contacto-motos").value;
+
+            let repC = 0
+            let compC = 0
+            let testC = 0
+            let infoC = 0
+
+            var repuestos = document.getElementById('checkbox1');
+            if (repuestos.checked == true) {
+                console.log("esta chequeado el repuesto")
+                repC = "interesado"
+            }
+            
+
+            var compra = document.getElementById('checkbox2');
+            if (compra.checked == true) {
+                console.log("esta chequeado el compra")
+                compC = "interesado"
+            }
+
+            var testDrive = document.getElementById('checkbox3');
+            if (testDrive.checked == true) {
+                console.log("esta chequeado el test")
+                testC = "interesado"
+            }
+
+            var infor = document.getElementById('checkbox4');
+            if (infor.checked == true) {
+                console.log("esta chequeado el info")
+                infoC = "interesado"
+            }
+
+
+
+            const contactoDescip = document.getElementById("contacto-descripcion").value;
+
+            console.log("aca esta todo")
+            console.log(contactoCorreo)
+            console.log(contactoNumero)
+            console.log(selectAuto)
+            console.log(selectMoto)
+            console.log(contactoDescip)
+
+            let transition = {correo_electronico:contactoCorreo,numero_telefono:contactoNumero,modelo_autos:selectAuto,modelo_motos:selectMoto,interes_repuestos:repC,interes_compra:compC,interes_testdrive:testC,interes_informacion:infoC,ingrese_descripcion:contactoDescip}
+
+            let JsonTrans = JSON.stringify(transition)
+            console.log(JsonTrans)
+
+            fetch('http://localhost/contactanos',{
+                method : 'POST',
+                body : JsonTrans,
+                headers:{'Content-Type': 'application/json'}
+            })
+        })
     </script>
 </body>
 

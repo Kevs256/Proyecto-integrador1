@@ -156,6 +156,18 @@ USE PIuno;
 -- FOREIGN KEY (factura_id) REFERENCES facturas(factura_id)
 -- )
 
+CREATE TABLE contactanos(
+correo_electronico VARCHAR(50),
+numero_telefono INT,
+modelo_autos VARCHAR(50),
+modelo_motos VARCHAR(50),
+interes_repuestos VARCHAR(50),
+interes_compra VARCHAR(50),
+interes_testdrive VARCHAR(50),
+interes_informacion VARCHAR(50),
+ingrese_descripcion VARCHAR(200)
+)
+
 -- llenado solo vehiculos
 
 -- INSERT INTO vehiculos_categoria(vehiculos_categoria_nombre)
@@ -211,6 +223,17 @@ CREATE OR replace PROCEDURE mostrar ()
  END;
 //
 DELIMITER ;
+
+DELIMITER //
+CREATE OR replace PROCEDURE contactos ()
+ BEGIN
+ INSERT INTO contactanos(correo_electronico,numero_telefono,modelo_autos,modelo_motos,interes_repuestos,interes_compra,interes_testdrive,interes_informacion,ingrese_descripcion)
+ 
+ END;
+//
+DELIMITER ;
+
+
 
 CALL mostrar();
 

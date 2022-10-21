@@ -12,10 +12,9 @@ const pool = mariadb.createPool({
   user: "root",
   password: "root",
   database:'piuno',
-  connectionLimit: 100,
 });
 
-//ruta de prueba
+//ruta de mostrar los autos en la pagina principal
 app.get("/test", async (req, res) => {
   let conn;
   try {
@@ -26,6 +25,13 @@ app.get("/test", async (req, res) => {
     res.json({error:error.message})
   }
 });
+
+//ruta de guardar
+app.post("/contactanos", async(req, res)=>{
+  conn = await pool.getConnection();
+  const rows = await conn.query('CALL mostrar();');
+  console.log(req.body)
+})
 
 //puerto
 const port = process.env.port || 80;
